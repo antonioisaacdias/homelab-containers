@@ -11,7 +11,7 @@ services:
     container_name: cadvisor
     restart: unless-stopped
     ports:
-      - "8080:8080"        # NAS: 8080:8080  | Media: use "8081:8080"
+      - "8081:8080"        # NAS: 8080:8080  | Media: use "8081:8080"
     privileged: true
     devices:
       - /dev/kmsg
@@ -22,7 +22,4 @@ services:
       - /sys/fs/cgroup:/sys/fs/cgroup:ro
       - /var/lib/docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
-
-
-
 

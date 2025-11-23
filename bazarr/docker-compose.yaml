@@ -1,0 +1,16 @@
+services:
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=America/Fortaleza
+    volumes:
+      - ./config:/config
+      - /mnt/media/downloads/movies:/movies
+      - /mnt/media/downloads/series:/tv
+      - /mnt/media/downloads/animes:/anime
+    ports:
+      - "6767:6767"
+    restart: unless-stopped

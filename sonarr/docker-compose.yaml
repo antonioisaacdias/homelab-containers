@@ -1,0 +1,16 @@
+services:
+  sonarr:
+    image: lscr.io/linuxserver/sonarr:latest
+    container_name: sonarr
+    environment:
+      - PUID=1000           # seu UID
+      - PGID=1000           # seu GID
+      - TZ=America/Fortaleza
+    volumes:
+      - ./config:/config
+      - /mnt/media/downloads/series:/tv      # séries normais
+      - /mnt/media/downloads/animes:/anime   # animes
+      - /mnt/media/downloads:/downloads      # pasta de downloads do qBittorrent
+    ports:
+      - "8989:8989"
+    restart: unless-stopped

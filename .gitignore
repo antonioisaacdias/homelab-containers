@@ -1,1 +1,111 @@
+#######################################
+# ENV VARIABLES
+#######################################
 .env
+*.env
+*.secret
+secrets/
+**/secrets/
+
+#######################################
+# DOCKER COMPOSE GENERATED DATA
+#######################################
+volumes/
+docker-data/
+.docker/
+dockerfiles/
+docker/
+
+#######################################
+# JELLYFIN (cache, metadata, images)
+#######################################
+**/jellyfin/cache/
+**/jellyfin/data/
+**/jellyfin/logs/
+**/jellyfin/metadata/
+**/jellyfin/config/data/
+**/jellyfin/config/data/**
+
+#######################################
+# COMMON MEDIA SERVER FOLDERS (radarr, sonarr, prowlarr…)
+#######################################
+**/config/MediaCover/
+**/MediaCover/
+**/metadata/
+**/backups/
+**/config/logs/
+**/logs/
+
+#######################################
+# GENERIC DATA / CACHE / TEMP
+#######################################
+**/data/
+**/config/data/
+config/
+**/config/
+**/config/**
+**/cache/
+**/db/
+**/tmp/
+**/temp/
+**/thumbs/
+**/thumbnails/
+**/downloads/
+**/incomplete/
+**/transcodes/
+**/sessions/
+
+#######################################
+# DATABASE FILES
+#######################################
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+
+#######################################
+# SMB / NAS / MOUNTED STORAGE
+#######################################
+mnt/
+media/
+storage/
+nas/
+**/mnt/
+**/media/
+**/storage/
+
+#######################################
+# LOGS / PID / RUN
+#######################################
+*.log
+*.pid
+*.sock
+*.out
+*.err
+
+#######################################
+# SYSTEM FILES
+#######################################
+.DS_Store
+Thumbs.db
+*.tmp
+*.bak
+*.old
+
+#######################################
+# FORGEJO / GITEA
+#######################################
+**/gitea/
+**/forgejo/data/
+**/forgejo/log/
+**/forgejo/indexers/
+
+#######################################
+# IMMICH
+#######################################
+**/immich/upload/
+**/immich/cache/
+**/immich/database/
+**/immich/storage/
+

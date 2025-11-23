@@ -1,0 +1,15 @@
+services:
+  radarr:
+    image: lscr.io/linuxserver/radarr:latest
+    container_name: radarr
+    environment:
+      - PUID=1000            # troque p/ seu UID
+      - PGID=1000            # troque p/ seu GID
+      - TZ=America/Fortaleza
+    volumes:
+      - ./config:/config
+      - /mnt/media/downloads/movies:/movies     # biblioteca final
+      - /mnt/media/downloads:/downloads         # onde o qbittorrent baixa
+    ports:
+      - "7878:7878"
+    restart: unless-stopped
