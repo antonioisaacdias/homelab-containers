@@ -1,0 +1,46 @@
+services:
+  forgejo-db:
+    image: postgres:16
+    container_name: forgejo-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: forgejo
+      POSTGRES_USER: forgejo
+      POSTGRES_PASSWORD: 33202121
+      TZ: America/Fortaleza
+    volumes:
+      - /var/lib/forgejo-postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U forgejo -d forgejo || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  forgejo:
+    image: codeberg.org/forgejo/forgejo:11-rootless
+    container_name: forgejo
+    restart: unless-stopped
+    depends_on:
+      forgejo-db:
+        condition: service_healthy
+    environment:
+      USER_UID: 1000
+      USER_GID: 1000
+      TZ: America/Fortaleza
+      DB_TYPE: postgres
+      DB_HOST: forgejo-db:5432
+      DB_NAME: forgejo
+      DB_USER: forgejo
+      DB_PASSWD: 33202121
+      APP_NAME: "Forgejo NAS"
+      RUN_MODE: prod
+    volumes:
+      - /NAS/forgejo/data:/data
+    ports:
+      - "3000:3000"   # Web (http://IP:3000)
+      - "222:22"      # SSH para Git (git clone ssh://git@IP:222/usuario/repositorio.git)
+
+networks:
+  default:
+    external: true
+    name: nextcloud-net
