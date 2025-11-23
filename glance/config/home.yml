@@ -1,0 +1,81 @@
+- name: Home
+  # Optionally, if you only have a single page you can hide the desktop navigation for a cleaner look
+  # hide-desktop-navigation: true
+  columns:
+    - size: small
+      widgets:
+        - type: clock
+          hour-format: 24h
+          timezones:
+            - timezone: America/Recife
+              label: João Pessoa
+            - timezone: America/Vancouver
+              label: Vancouver
+
+        - type: calendar
+          first-day-of-week: monday
+
+        - type: rss
+          limit: 10
+          collapse-after: 3
+          cache: 12h
+          feeds:
+            - url: https://g1.globo.com/rss/g1/politica
+              title: g1.com
+
+    - size: full
+      widgets:
+        - type: videos
+          channels:
+            - UCEf5U1dB5a2e2S-XUlnhxSA #Diolinux
+            - UCG-KRRI41P4TsaOMeAM9dug #1155 do ET
+            - UCr3dtVIm3nL7I-Yjn2PxxIQ #CORTES - Leon e Nilce 
+
+        - type: group
+          widgets:
+            - type: reddit
+              subreddit: autohospedagem
+              show-thumbnails: true
+            - type: reddit
+              subreddit: HomeLabPorn
+              show-thumbnails: true
+            - type: reddit
+              subreddit: selfhosted
+              show-thumbnails: true
+            - type: reddit
+              subreddit: homelab
+              show-thumbnails: true
+
+
+    - size: small
+      widgets:
+        - type: weather
+          location: João Pessoa, Brazil
+          units: metric # alternatively "imperial"
+          hour-format: 12h # alternatively "24h"
+          # Optionally hide the location from being displayed in the widget
+          # hide-location: true
+
+        - type: markets
+          markets:
+            - symbol: SPY
+              name: S&P 500
+            - symbol: BTC-USD
+              name: Bitcoin
+            - symbol: NVDA
+              name: NVIDIA
+            - symbol: AAPL
+              name: Apple
+            - symbol: MSFT
+              name: Microsoft
+
+        - type: releases
+          cache: 1d
+          # Without authentication the Github API allows for up to 60 requests per hour. You can create a
+          # read-only token from your Github account settings and use it here to increase the limit.
+          # token: ...
+          repositories:
+            - glanceapp/glance
+            - go-gitea/gitea
+            - immich-app/immich
+            - syncthing/syncthing

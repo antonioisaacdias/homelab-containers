@@ -1,0 +1,46 @@
+server:
+  assets-path: /app/assets
+
+theme:
+  light: false
+  # fundo verde musgo profundo
+  background-color: 140 18 10
+  # verde principal (acentos, links)
+  primary-color: 135 35 45
+  # verde mais vivo para status positivo
+  positive-color: 130 45 40
+  # vermelho ameno para alertas
+  negative-color: 0 65 50
+  # contraste levemente aumentado para texto nítido mas não agressivo
+  contrast-multiplier: 1.12
+  # reduz a saturação do texto para tons suaves
+  text-saturation-multiplier: 0.85
+  disable-picker: false
+
+  presets:
+    # tema alternativo ainda mais escuro — quase preto-esverdeado
+    deep-forest:
+      background-color: 140 20 6
+      primary-color: 130 30 40
+      positive-color: 135 45 35
+      negative-color: 0 60 45
+      contrast-multiplier: 1.15
+      text-saturation-multiplier: 0.8
+
+    # versão mais clara para modo diurno
+    sage-light:
+      light: true
+      background-color: 120 10 92
+      primary-color: 130 30 35
+      positive-color: 125 35 32
+      negative-color: 5 70 50
+      contrast-multiplier: 1.05
+      text-saturation-multiplier: 0.8
+
+
+pages:
+  # It's not necessary to create a new file for each page and include it, you can simply
+  # put its contents here, though multiple pages are easier to manage when separated
+  - $include: home.yml
+  - $include: kiosk.yml
+

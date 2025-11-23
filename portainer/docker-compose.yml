@@ -1,0 +1,20 @@
+services:
+  portainer:
+    image: portainer/portainer-ce:latest
+    container_name: portainer
+    restart: unless-stopped
+    ports:
+      - "9443:9443"   # HTTPS (principal)
+      - "9000:9000"   # HTTP (redireciona p/ 9443)
+      # - "8000:8000" # (opcional) Portainer Edge (se for usar)
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - portainer_data:/data
+    # (Opcional) limitações/segurança
+    # security_opt:
+    #   - no-new-privileges:true
+    # cap_drop:
+    #   - ALL
+
+volumes:
+  portainer_data:
