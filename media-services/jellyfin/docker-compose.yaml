@@ -3,8 +3,8 @@ services:
     image: lscr.io/linuxserver/jellyfin:latest
     container_name: jellyfin
     environment:
-      - PUID=1000       # ajuste com o seu UID
-      - PGID=1000       # ajuste com o seu GID
+      - PUID=1000
+      - PGID=1000
       - TZ=America/Fortaleza
     volumes:
       - ./config:/config
@@ -12,11 +12,8 @@ services:
       - /mnt/media/downloads/series:/media/series
       - /mnt/media/downloads/music:/media/music
       - /mnt/media/downloads/animes:/media/animes
-      - /opt/containers/jellyfin/cache:/cache   # opcional, melhora thumbnails
+      - /opt/containers/jellyfin/cache:/cache
     ports:
-      - "8096:8096"     # HTTP (principal)
-      # - "8920:8920"   # HTTPS (se configurar cert)
-      - "7359:7359/udp" # descoberta Jellyfin
-      - "1900:1900/udp" # DLNA/SSDP
+      - "8096:8096"
     restart: unless-stopped
 
