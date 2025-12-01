@@ -1,0 +1,30 @@
+services:
+  broker:
+    image: redis:7-alpine
+    container_name: paperless_redis
+    restart: unless-stopped
+
+  db:
+    image: postgres:17-alpine
+    container_name: paperless_db
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - /NAS/paperless-ngx/postgres_data:/var/lib/postgresql/data
+
+  webserver:
+    build: .
+    container_name: paperless-ngx
+    restart: unless-stopped
+    depends_on:
+      - broker
+      - db
+    env_file: .env
+    ports:
+      - 8000:8000
+    volumes:
+      - /NAS/paperless-ngx/data:/usr/src/paperless/data
+      - /NAS/paperless-ngx/media:/usr/src/paperless/media
+      - /NAS/paperless-ngx/consume:/usr/src/paperless/consume
+      - /NAS/paperless-ngx/export:/usr/src/paperless/export
+    user: "1000:1000"
