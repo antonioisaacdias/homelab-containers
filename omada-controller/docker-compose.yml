@@ -1,0 +1,12 @@
+services:
+  omada-controller:
+    image: mbentley/omada-controller:latest
+    container_name: omada-controller
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - /opt/omada/data:/opt/tplink/EAPController/data
+      - /opt/omada/work:/opt/tplink/EAPController/work
+      - /opt/omada/logs:/opt/tplink/EAPController/logs
+    environment:
+      - TZ=America/Sao_Paulo
